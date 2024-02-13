@@ -1,0 +1,98 @@
+<mat-card>
+    <h2 class="alinear">Listado de prestamos</h2>
+    <mat-card-header>
+        <div fxFlex fxLayout="row" style="margin-left: -40px;">
+            <ul fxLayout="row" fxLayoutGap="20px">
+                <li>
+                    <button mat-raised-button color="primary" style="background-color: rgb(15, 76, 117);" (click)="irAtras()">Atrás</button>
+                </li>
+            </ul>
+        </div>
+        <div fxFlex fxLayout="row" fxLayoutAlign="flex-end" style="margin-right: 40px;" >
+            <ul fxLayout="row" fxLayoutGap="20px">
+                <li>
+                    <button mat-raised-button color="primary" style="background-color: rgb(15, 76, 117);" (click)="openPrestamoDialog()">Registrar prestamo</button>
+                </li>
+            </ul>
+        </div>
+    </mat-card-header>
+    <div mat-card-image></div>
+    <mat-card-content>
+        <table mat-table [dataSource]="prestamos" class="mat-cell">
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> N°</th>
+                <td mat-cell *matCellDef="let element">{{element.id}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="nombreCli">
+                <th mat-header-cell *matHeaderCellDef>Nombres</th>
+                <td mat-cell *matCellDef="let element">{{element.cliente.nombre}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="apellidoCli">
+                <th mat-header-cell *matHeaderCellDef>Apellidos</th>
+                <td mat-cell *matCellDef="let element">{{element.cliente.apellido}}</td>
+            </ng-container>
+            <ng-container matColumnDef="credito">
+                <th mat-header-cell *matHeaderCellDef>Crédito</th>
+                <td mat-cell *matCellDef="let element">$ {{element.credito}}</td>
+            </ng-container>
+            <ng-container matColumnDef="porcentaje">
+                <th mat-header-cell *matHeaderCellDef>Tasa</th>
+                <td mat-cell *matCellDef="let element">{{element.porcentaje}} %</td>
+            </ng-container>
+            <ng-container matColumnDef="periodoPago">
+                <th mat-header-cell *matHeaderCellDef>Periodo pago</th>
+                <td mat-cell *matCellDef="let element">{{element.periodoPago}}</td>
+            </ng-container>
+            <ng-container matColumnDef="Npagos">
+                <th mat-header-cell *matHeaderCellDef>Pagos restantes</th>
+                <td mat-cell *matCellDef="let element">{{element.npagos}}</td>
+            </ng-container>
+            <ng-container matColumnDef="valorCuota">
+                <th mat-header-cell *matHeaderCellDef>Valor cuota</th>
+                <td mat-cell *matCellDef="let element">$ {{element.valorCuota}}</td>
+            </ng-container>
+            <ng-container matColumnDef="debe">
+                <th mat-header-cell *matHeaderCellDef>Debe</th>
+                <td mat-cell *matCellDef="let element">$ {{element.debe}}</td>
+            </ng-container>
+            <ng-container matColumnDef="fecha">
+                <th mat-header-cell *matHeaderCellDef>Fecha</th>
+                <td mat-cell *matCellDef="let element">{{element.fecha}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="estado">
+                <th mat-header-cell *matHeaderCellDef>Estado</th>
+                <td mat-cell *matCellDef="let element">{{element.estado}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef> Acciones</th>
+                <td mat-cell *matCellDef="let element; let i=index;">
+                    <button title="Registrar cuota" mat-icon-button color="accent" (click)="openCuotaoDialog(element.valorCuota, element.id, element.debe)">
+                        <mat-icon aria-label="Registrar cuota">monetization_on</mat-icon>
+                    </button>
+
+                    <button title="Cuotas registradas" mat-icon-button color="accent" (click)="openVerCuota(element.id)" >
+                        <mat-icon aria-label="Prestamos">calendar_month</mat-icon>
+                    </button>
+            
+                    <button title="Editar" mat-icon-button color="accent" (click)="edit(element.id, element.credito, element.porcentaje, element.periodoPago, element.npagos, element.valorCuota , element.debe, element.estado, element.cliente.id)">
+                        <mat-icon aria-label="Edit">edit</mat-icon>
+                    </button>
+
+                    <button title="Eliminar" mat-icon-button color="accent" (click)="delete(element.id)">
+                        <mat-icon aria-label="Delete">delete</mat-icon>
+                    </button>
+            
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            
+        </table>
+        <mat-paginator [pageSizeOptions]="[5,10,20]" showFirstLastButtons></mat-paginator>
+    </mat-card-content>
+</mat-card>
+

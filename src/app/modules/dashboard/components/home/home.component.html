@@ -1,0 +1,94 @@
+
+<html>
+	<body>
+        <header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner">
+            <div class="overlay"></div>
+            <div class="gtco-container">
+                <div class="row">
+                    <div class="col-md-7 mt-text animate-box" data-animate-effect="fadeInUp">
+                        <h1 *ngIf="!editarP">Información del usuario</h1>	
+                        <span *ngIf="!editarP" class="intro-text-small">Nombres: {{usuarioForm.value.nombre}}</span>
+                        <span *ngIf="!editarP" class="intro-text-small">Apellidos: {{usuarioForm.value.apellido}}</span>
+                        <span *ngIf="!editarP"class="intro-text-small">Número de documento: {{usuarioForm.value.cc}}</span>
+                        <span *ngIf="!editarP" class="intro-text-small">Rol: {{usuarioForm.value.rol}}</span>
+                        <span *ngIf="!editarP" class="intro-text-small">Email: {{usuarioForm.value.email}}</span>
+                        
+                        <div *ngIf="!editarP" fxLayoutAlign="flex-end" style="margin-right: 40px;" >
+                                <ul fxLayout="row" fxLayoutGap="20px">
+                                    <li>
+                                        <button mat-raised-button color="primary" (click)="editar()"  style="background-color: rgb(15, 76, 117);">EDITAR USUARIO</button>
+                                        &nbsp;
+                                        &nbsp;
+                                        <button mat-raised-button color="primary" (click)="eliminar()"  style="background-color: rgb(196, 24, 24);">ELIMINAR USUARIO</button>
+                                    </li>
+                                </ul>
+                        </div>   
+                    </div>
+                    <div>
+                        <div *ngIf="editarP">
+                            <h1 >Editar usuario</h1>
+                            <form [formGroup]="usuarioForm" (ngSubmit)="update()">
+                                <div style="display: flex;">
+                                    <div class="col-md-12 form-group">
+                                        <span class="letra" >NOMBRES </span><br>
+                                        <input type="text" style="color: rgb(194, 191, 191);" formControlName="nombre" required class="form-control" placeholder="Ingrese su nombre">
+                                    </div>
+                                    &nbsp;
+                                    &nbsp;
+                                    &nbsp;
+                                    <div class="col-md-12 form-group">
+                                        <span class="letra" >APELLIDOS </span><br>
+                                        <input type="text" style="color: rgb(194, 191, 191);" formControlName="apellido" required class="form-control" placeholder="Ingrese su apellido">
+                                    </div>
+                                </div>
+                                <br>
+
+                                <div style="display: flex;">
+                                    <div class="col-md-12 form-group">
+                                        <span class="letra" >CC </span><br>
+                                        <input type="number" readonly style="color: rgb(194, 191, 191);" formControlName="cc" required class="form-control" placeholder="Ingrese su nombre">
+                                    </div>
+                                    &nbsp;
+                                    &nbsp;
+                                    &nbsp;
+                                    <div class="col-md-12 form-group">
+                                        <span class="letra" >ROL </span><br>
+                                        <input type="number" style="color: rgb(194, 191, 191);" formControlName="rol" required class="form-control" placeholder="Ingrese su rol">
+                                    </div>
+                                </div>
+                                <br>
+                                <div style="display: flex;">
+                                    <div class="col-md-12 form-group">
+                                        <span class="letra" >EMAIL </span><br>
+                                        <input type="text" style="color: rgb(194, 191, 191);" formControlName="email" required class="form-control" placeholder="Ingrese su nombre">
+                                    </div>
+                                    &nbsp;
+                                    &nbsp;
+                                    &nbsp;
+                                    <div class="col-md-12 form-group">
+                                        <span class="letra" >CONTRASEÑA </span><i>(Mímino 8 caracteres)</i><br>
+                                        <input type="text" style="color: rgb(194, 191, 191);" formControlName="contrasena" required class="form-control" placeholder="Ingrese su apellido">
+                                    </div>
+                                </div>
+
+                                
+
+                                <div *ngIf="editarP" fxLayoutAlign="flex-end" style="margin-right: 40px;" >
+                                    <ul fxLayout="row" fxLayoutGap="20px">
+                                        <li>
+                                            <button mat-raised-button color="primary" (click)="cancelar()" style="background-color: rgb(15, 76, 117);">CANCELAR</button>
+                                        </li>
+                                         <li>
+                                            <button mat-raised-button color="primary" type="submit"  style="background-color: rgb(15, 76, 117);">ACTUALIZAR</button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+	</body>
+</html>
+

@@ -1,0 +1,40 @@
+<mat-card>
+    <div mat-card-image></div>
+    <mat-card-content>
+        <table mat-table [dataSource]="cuotas" class="mat-cell">
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> N°</th>
+                <td mat-cell *matCellDef="let element">{{element.id}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="valor">
+                <th mat-header-cell *matHeaderCellDef>Valor</th>
+                <td mat-cell *matCellDef="let element">$ {{element.valor}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="fecha">
+                <th mat-header-cell *matHeaderCellDef>Fecha</th>
+                <td mat-cell *matCellDef="let element">{{element.fecha}}</td>
+            </ng-container>
+            
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            
+        </table>
+        <mat-paginator [pageSizeOptions]="[3]" showFirstLastButtons></mat-paginator>
+
+        <mat-card-header>
+            <div fxFlex fxLayout="row" >
+                <ul fxLayout="row" fxLayoutGap="20px">
+                    <mat-dialog-actions>
+                        <button style="margin-left: -40px;" mat-button color="primary" (click)="onCancel()">
+                            <mat-icon>keyboard_arrow_left</mat-icon>Atrás
+                        </button>
+                    </mat-dialog-actions>
+                </ul>
+            </div>
+            <label style="margin-right: 40px;">Total: $ {{total}}</label>
+
+        </mat-card-header>
+    </mat-card-content>
+</mat-card>

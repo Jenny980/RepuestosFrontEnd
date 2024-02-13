@@ -1,0 +1,56 @@
+<body>      
+    <div id="contenedor">
+        <div id="central">
+            <div id="login">
+                <div class="titulo">
+                    Registrarse
+                </div>
+                <form [formGroup]="loginForm" (ngSubmit)="register()">
+
+                    <div style="display: flex;">
+                        <div  class="form-group">
+                            <strong>Nombres</strong>
+                            <input  style="width: 220px;" type="text" name="nombre" formControlName="nombre" placeholder="Nombre" required>
+                        </div>
+                        &nbsp;
+                        &nbsp;
+                        &nbsp;
+                        <div  class="form-group">
+                            <strong>Apellidos</strong>
+                            <input style="width: 220px;" type="text" name="apellido" formControlName="apellido" placeholder="Apellido" required>
+                        </div>
+                    </div>
+                    <div style="display: flex;">
+                        <div  class="form-group">
+                            <strong>Número de documento</strong>
+                            <input style="width: 220px;" type="number" name="cc" formControlName="cc" placeholder="Cc" required>
+                        </div>
+                        &nbsp;
+                        &nbsp;
+                        &nbsp;
+                        <div  class="form-group">
+                            <strong>Rol</strong>
+                            <input style="width: 220px;" type="number" name="rol" formControlName="rol" placeholder="Rol" required>
+                        </div>
+                    </div>
+                    <div style="display: flex;">
+                        <div  class="form-group">
+                            <strong>Email</strong>
+                            <input style="width: 220px;" type="text" name="email" formControlName="email" placeholder="Email" required>
+                        </div>
+                        &nbsp;
+                        &nbsp;
+                        &nbsp;
+                        <div  class="form-group">
+                            <strong>Contraseña </strong><i>(Mínimo 8 caracteres)</i>
+                            <input style="width: 220px;" type="text" name="contrasena" formControlName="contrasena" placeholder="Contraseña" required>
+                        </div>
+                    </div>
+                    <button type="submit" title="Registrarse" name="Registrarse" >Registrarse</button>
+                </form>  
+            </div>
+        </div>
+    </div>     
+</body>
+
+

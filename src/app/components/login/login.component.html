@@ -1,0 +1,24 @@
+<body>      
+        <div id="contenedor">
+            <div id="central">
+                <div id="login">
+                    <div class="titulo">
+                        Bienvenido
+                    </div>
+                    <form [formGroup]="loginForm" (ngSubmit)="login()">
+                        <input type="text" name="usuario" formControlName="email" placeholder="Email" required>
+                        
+                        <input type="password" placeholder="Contraseña" formControlName="password" name="password" required>
+                        <button type="submit" title="Ingresar" name="Ingresar" >Login</button>
+                    </form>
+                    
+                    <div class="pie-form">
+                        <a (click)="irRegistro()">¿No tienes Cuenta? Registrate</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+            
+    </body>
+
